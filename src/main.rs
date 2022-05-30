@@ -18,7 +18,7 @@ fn main() {
         ..user2 
         // the syntax `..` specifies that remaining fields not explicitly set
         // should have the same value as the fields in user2
-    }
+    };
     // struct update syntax uses `=` like assignment because it moves data.
     // if we didn't specify both email and username, the corresponding String
     // from user2 would be moved into user3, and we would no longer be able
@@ -32,6 +32,10 @@ fn main() {
     // a fn that takes a parameter of type Color can not take one of type Point
     // even though they're both made up of three i32s. Otherwise they're just tuples.
 
+    // unpack with the type name, like this
+    let Color(_a, _b, _c) = black;
+    let Point(_a, _b, _c) = origin;
+
     // Unit-Like Structs - structs with no fields
     struct AlwaysEqual;
     let subject = AlwaysEqual;
@@ -41,6 +45,11 @@ fn main() {
 
 struct User {
     active: bool,
+    // using the owned String type instead of the &str string slice type
+    // because we want each instance of this struct to own all of its data
+    // and for it to be valid as long as the struct as valid
+    // could store references to data owned by something else but this
+    // requires use of lifetimes
     username: String,
     email: String,
     sign_in_count: u64,
