@@ -42,6 +42,7 @@ fn main() {
     // unpack with the type name, like this
     let Color(_a, _b, _c) = black;
     let Point(_a, _b, _c) = origin;
+    // underscores before these variables or the compiler will warn that they're unused
 
     // Unit-Like Structs - structs with no fields
     struct AlwaysEqual;
